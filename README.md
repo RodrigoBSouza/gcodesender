@@ -1,68 +1,107 @@
-# Mini CNC de Baixo Custo - Documentação do Projeto
+![GitHub Logo](https://github.com/gnea/gnea-Media/blob/master/Grbl%20Logo/Grbl%20Logo%20250px.png?raw=true)
+***
 
-## Descrição do Projeto
+### Grbl v1.1 has been released [here](https://github.com/gnea/grbl/releases)!
+### Notice: This site will be phased out and moved to the new one!
 
-Este repositório contém a documentação e o código-fonte para a construção de uma Mini CNC de baixo custo. A máquina utiliza drives de DVD reutilizados, integrados de maneira criativa com uma plataforma de suporte em madeira, e é controlada por um Arduino UNO R3. A mini CNC é projetada para realizar desenhos de baixa resolução coordenando uma caneta nos eixos X, Y e Z.
+***
 
-## Conteúdo do Repositório
+Grbl is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling. It will run on a vanilla Arduino (Duemillanove/Uno) as long as it sports an Atmega 328. 
 
-1. **Descrição do Funcionamento e Uso:**
-   ## Descrição de Funcionamento
+The controller is written in highly optimized C utilizing every clever feature of the AVR-chips to achieve precise timing and asynchronous operation. It is able to maintain up to 30kHz of stable, jitter free control pulses.
 
-### Montagem da Base de Madeira
+It accepts standards-compliant g-code and has been tested with the output of several CAM tools with no problems. Arcs, circles and helical motion are fully supported, as well as, all other primary g-code commands. Macro functions, variables, and most canned cycles are not supported, but we think GUIs can do a much better job at translating them into straight g-code anyhow.
 
-Inicialmente, uma base de madeira foi construída para facilitar os testes preliminares, proporcionando uma visão antecipada do potencial desfecho do projeto. A estrutura finalizada apresenta uma estética agradável e respeita os parâmetros estabelecidos, consolidando a escolha da base de madeira como suporte definitivo.
+Grbl includes full acceleration management with look ahead. That means the controller will look up to 18 motions into the future and plan its velocities ahead to deliver smooth acceleration and jerk-free cornering.
 
-### Alinhamento dos Drives
+* [Licensing](https://github.com/grbl/grbl/wiki/Licensing): Grbl is free software, released under the GPLv3 license.
 
-O primeiro desafio foi alinhar os drives de DVD sobre a estrutura de madeira e posicionar o drive de disquete em relação ao drive de DVD. Esse processo exigiu uma busca meticulosa pela precisão, evitando qualquer tensão nos motores e eixos durante a geração dos desenhos essenciais para os testes subsequentes.
+* For more information and help, check out our **[Wiki pages!](https://github.com/grbl/grbl/wiki)** If you find that the information is out-dated, please to help us keep it updated by editing it or notifying our community! Thanks!
 
-### Conexões Externas e Protoboard
+* Lead Developer [_2011 - Current_]: Sungeun(Sonny) K. Jeon, Ph.D. (USA) aka @chamnit
 
-Após garantir o alinhamento preciso, foram feitas as conexões externas utilizando uma protoboard como interface para a ligação dos motores. Isso assegurou a integridade e funcionalidade do sistema. A Figura abaixo ilustra o protótipo montado sobre a base de madeira, destacando o cuidadoso processo de montagem.
+* Lead Developer [_2009 - 2011_]: Simen Svale Skogsrud (Norway). aka The Originator/Creator/Pioneer/Father of Grbl.
 
-![Imagem do WhatsApp de 2023-11-11 à(s) 20 28 37_255ecdee](https://github.com/RodrigoBSouza/gcodesender/assets/87902323/34b0ba10-9cae-40a9-8eb7-982097d631bc)
+***
 
-### Configuração do Software
+### Official Supporters of the Grbl CNC Project
+![Official Supporters](https://github.com/gnea/gnea-Media/blob/master/Contributors.png?raw=true)
 
-A primeira fase da configuração no software envolve o envio da biblioteca "grbl.h" para a placa Arduino UNO R3. O GRBL, uma ferramenta de código aberto, destaca-se pelo desempenho exemplar na gestão do movimento de máquinas móveis.
+***
 
-### Uso do Inkscape para Conversão de Desenhos
+_**Master Branch:**_
+* [Grbl v0.9j Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1I8Ey4S) _(2016-03-17)_
+  - **IMPORTANT INFO WHEN UPGRADING TO GRBL v0.9 :** 
+  - Baudrate is now **115200** (Up from 9600). 
+  - Homing cycle updated. Located based on switch trigger, rather than release point.
+  - Variable spindle is now enabled by default. Z-limit(D12) and spindle enable(D11) have switched to access the hardware PWM on D11. Homing will not work if you do not re-wire your Z-limit switch to D12.
 
-O software utilizado para converter desenhos ou imagens em formato vetorial é o Inkscape, uma aplicação de qualidade profissional de código aberto. Dedicado à manipulação de gráficos vetoriais, o Inkscape opera conforme o padrão aberto SVG (Scalable Vector Graphics). Através dele, a imagem é moldada conforme as necessidades específicas e os parâmetros da mini CNC.
+_**Archives:**_
+* [Grbl v0.9i Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1EiviDk) 
+* [Grbl v0.9g Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1m8E1Qa) 
+* [Grbl v0.8c Atmega328p 16mhz 9600baud](http://bit.ly/SSdCJE)
+* [Grbl v0.7d Atmega328p 16mhz 9600baud](http://bit.ly/ZhL15G)
+* [Grbl v0.6b Atmega328p 16mhz 9600baud](http://bit.ly/VD04A5)
+* [Grbl v0.51 Atmega328p 16mhz 9600baud](http://bit.ly/W75BS1)
+* [Grbl v0.6b Atmega168 16mhz 9600baud](http://bit.ly/SScWnE)
+* [Grbl v0.51 Atmega168 16mhz 9600baud](http://bit.ly/VXyrYu)
 
-### Universal Gcode Sender
 
-O Inkscape desempenha um papel crucial na geração da imagem completa, incluindo parâmetros e configurações relevantes. Essa imagem é carregada no Universal Gcode Sender, um software em Java que atua como interface com controladores CNC avançados, como GRBL e TinyG. O Universal Gcode Sender estabelece a comunicação com o conjunto de placas, permitindo a execução do desenho na mini CNC. A configuração desse processo pode ser visualizada na Figura 7.
+***
 
-![image](https://github.com/RodrigoBSouza/gcodesender/assets/87902323/c3c156f4-7eef-4102-8db2-f181fc4cbb92)
+## Update Summary for v0.9j
+  - **Restore EEPROM feature:** A new set of restore EEPROM features to help OEMs and users reset their Grbl installation to the build defaults. See Configuring Grbl Wiki for details.
+  - **More configuration options for input pins**
+  - **Bug fixes including:** Soft limit error handling, disable spindle when S0, g-code reporting of G38.x.
+  
+## Update Summary for v0.9i
+  - **IMPORTANT:**
+    - **Homing cycle updated. Locates based on trigger point, rather than release point.**
+    - **System tweaks: $14 cycle auto-start has been removed. No more QUEUE state.**
+  - **New G-Codes** 
+  - **CoreXY Support**
+  - **Safety Door Support**
+  - **Full Limit and Control Pin Configurability**
+  - **Additional Compile-Time Feature Options**
 
-2. **Software Desenvolvido e Documentação de Código:**
-   - O código-fonte está disponível no diretório [src](src/).
-   - [Documentação do Código](docs/CODE_DOCUMENTATION.md)
+## Update Summary for v0.9h from v0.8
+  - **IMPORTANT:**
+    - **Default serial baudrate is now 115200! (Up from 9600)**
+    - **Z-limit(D12) and spindle enable(D11) pins have switched to support variable spindle!**
+  - **Super Smooth Stepper Algorithm**
+  - **Stability and Robustness Updates**
+  - **(x4)+ Faster Planner**
+  - **Compile-able via Arduino IDE!**
+  - **G-Code Parser Overhaul**
+  - **Independent Acceleration and Velocity Settings**
+  - **Soft Limits**
+  - **Probing**
+  - **Dynamic Tool Length Offsets**
+  - **Improved Arc Performance**
+  - **CPU Pin Mapping**
+  - **New Grbl SIMULATOR! (by @jgeisler and @ashelly)**
+  - **Configurable Real-time Status Reporting**
+  - **Updated Homing Routine**
+  - **Optional Limit Pin Sharing**
+  - **Optional Variable Spindle Speed Output**
+  - **Additional Compile-Time Feature Options**
 
-3. **Descrição do Hardware Utilizado:**
-   - Plataformas de desenvolvimento: Arduino UNO R3
-   - Sensores: Drives de DVD e Drive de Disquete
-   - Atuadores: Motores de passo
-   - Outros: CNC Shield A4988, Drivers de Potência
-
-## Resumo do Artigo
-
-Este projeto visa criar uma Mini CNC acessível e de baixa resolução, utilizando componentes reciclados, como drives de DVD, e uma plataforma de suporte em madeira. A documentação abrange desde a adaptação dos drives até a programação do Arduino, permitindo a reprodução do projeto. A proposta busca democratizar a tecnologia CNC, proporcionando uma abordagem acessível para experimentação artística e prototipagem básica.
-
-## Resultados
-
-A montagem da Mini CNC revelou-se um sucesso, proporcionando uma visão prática e funcional do projeto proposto. A base de madeira, cuidadosamente confeccionada, demonstrou ser uma escolha sólida para suportar os componentes da máquina. O alinhamento preciso dos drives de DVD e do drive de disquete, apesar dos desafios iniciais, foi alcançado, garantindo a estabilidade durante as operações.
-
-As conexões externas, realizadas através de uma protoboard, contribuíram para a integridade e funcionalidade do sistema, permitindo uma fácil manutenção e ajustes. O protótipo montado sobre a base de madeira, destaca a meticulosidade do processo de montagem, resultando em uma estética agradável e compacta.
-
-A configuração do software, envolvendo o uso da biblioteca "grbl.h" e as ferramentas como Inkscape e Universal Gcode Sender, revelou-se eficiente e acessível. A comunicação entre o Arduino e os drives de potência foi bem-sucedida, proporcionando um controle preciso dos motores e, consequentemente, dos movimentos da caneta.
-
-Os testes de funcionamento, incluindo a execução de desenhos simples, confirmaram a capacidade da Mini CNC em realizar suas tarefas previstas. A resolução, embora limitada, mostrou-se suficiente para experimentações artísticas e prototipagem básica. Os resultados obtidos destacam a viabilidade e acessibilidade desse projeto, representando um passo significativo em direção à democratização da tecnologia CNC.
-
-Em suma, a montagem bem-sucedida da Mini CNC não apenas valida a abordagem proposta, mas também oferece uma plataforma pronta para experimentação, aprendizado prático e aplicações criativas, promovendo a acessibilidade e sustentabilidade no contexto da fabricação digital.
-
-## Considerações Finais
-
-Este repositório é uma fonte abrangente para quem busca construir e entender a Mini CNC de baixo custo. 
+-
+``` 
+List of Supported G-Codes in Grbl v0.9 Master:
+  - Non-Modal Commands: G4, G10L2, G10L20, G28, G30, G28.1, G30.1, G53, G92, G92.1
+  - Motion Modes: G0, G1, G2, G3, G38.2, G38.3, G38.4, G38.5, G80
+  - Feed Rate Modes: G93, G94
+  - Unit Modes: G20, G21
+  - Distance Modes: G90, G91
+  - Arc IJK Distance Modes: G91.1
+  - Plane Select Modes: G17, G18, G19
+  - Tool Length Offset Modes: G43.1, G49
+  - Cutter Compensation Modes: G40
+  - Coordinate System Modes: G54, G55, G56, G57, G58, G59
+  - Control Modes: G61
+  - Program Flow: M0, M1, M2, M30*
+  - Coolant Control: M7*, M8, M9
+  - Spindle Control: M3, M4, M5
+  - Valid Non-Command Words: F, I, J, K, L, N, P, R, S, T, X, Y, Z
+```
