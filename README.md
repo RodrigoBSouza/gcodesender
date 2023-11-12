@@ -21,7 +21,7 @@ O primeiro desafio foi alinhar os drives de DVD sobre a estrutura de madeira e p
 
 Após garantir o alinhamento preciso, foram feitas as conexões externas utilizando uma protoboard como interface para a ligação dos motores. Isso assegurou a integridade e funcionalidade do sistema. A Figura abaixo ilustra o protótipo montado sobre a base de madeira, destacando o cuidadoso processo de montagem.
 
-![Imagem do WhatsApp de 2023-11-11 à(s) 20 28 37_255ecdee](https://github.com/RodrigoBSouza/gcodesender/assets/87902323/91301d49-d83e-47e9-8b9f-d4b2d8a9438a){:width="300px"}
+![Imagem do WhatsApp de 2023-11-11 à(s) 20 28 37_255ecdee](https://github.com/RodrigoBSouza/gcodesender/assets/87902323/91301d49-d83e-47e9-8b9f-d4b2d8a9438a)
 
 ### Configuração do Software
 
@@ -35,7 +35,7 @@ O software utilizado para converter desenhos ou imagens em formato vetorial é o
 
 O Inkscape desempenha um papel crucial na geração da imagem completa, incluindo parâmetros e configurações relevantes. Essa imagem é carregada no Universal Gcode Sender, um software em Java que atua como interface com controladores CNC avançados, como GRBL e TinyG. O Universal Gcode Sender estabelece a comunicação com o conjunto de placas, permitindo a execução do desenho na mini CNC. A configuração desse processo pode ser visualizada na figura abaixo.
 
-![Texto Alternativo](https://raw.githubusercontent.com/RodrigoBSouza/gcodesender/main/assets/87902323/8bf815d9-e379-41f4-bf0b-9ee73c39997c){:width="50%"}
+![Texto Alternativo](https://raw.githubusercontent.com/RodrigoBSouza/gcodesender/main/assets/87902323/8bf815d9-e379-41f4-bf0b-9ee73c39997c)
 
 2. **Software Desenvolvido e Documentação de Código:**
    - O código-fonte está disponível no diretório: https://github.com/RodrigoBSouza/gcodesender/tree/main
@@ -58,4 +58,4 @@ Em suma, a montagem bem-sucedida da Mini CNC não apenas valida a abordagem prop
 
 ## Considerações Finais
 
-Este repositório é uma fonte abrangente para quem busca construir e entender a Mini CNC de baixo custo. Para mais informações, entre em contato através dos canais mencionados na [documentação de comunicação](docs/COMMUNICATION_DOCUMENTATION.md).
+Este repositório é uma fonte abrangente para quem busca construir e entender a Mini CNC de baixo custo.
