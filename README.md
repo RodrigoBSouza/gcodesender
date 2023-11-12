@@ -35,7 +35,7 @@ O software utilizado para converter desenhos ou imagens em formato vetorial é o
 
 O Inkscape desempenha um papel crucial na geração da imagem completa, incluindo parâmetros e configurações relevantes. Essa imagem é carregada no Universal Gcode Sender, um software em Java que atua como interface com controladores CNC avançados, como GRBL e TinyG. O Universal Gcode Sender estabelece a comunicação com o conjunto de placas, permitindo a execução do desenho na mini CNC. A configuração desse processo pode ser visualizada na figura abaixo.
 
-![Texto Alternativo](https://raw.githubusercontent.com/RodrigoBSouza/gcodesender/main/assets/87902323/8bf815d9-e379-41f4-bf0b-9ee73c39997c)
+![image](https://github.com/RodrigoBSouza/gcodesender/assets/87902323/8bf815d9-e379-41f4-bf0b-9ee73c39997c)
 
 2. **Software Desenvolvido e Documentação de Código:**
    - O código-fonte está disponível no diretório: https://github.com/RodrigoBSouza/gcodesender/tree/main
